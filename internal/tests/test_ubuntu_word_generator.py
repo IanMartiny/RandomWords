@@ -1,12 +1,12 @@
 """
-    Unit test for LinuxWordGenerator.
+    Unit test for UbuntuWordGenerator.
     Ensures that all the words with ' in them are dropped
 """
 import builtins
 from testslide import TestCase
 
 # pylint: disable=import-error
-from linux_word_generator import LinuxWordGenerator
+from ubuntu_word_generator import UbuntuWordGenerator
 
 # pylint: disable=too-few-public-methods
 class MockFile:
@@ -21,7 +21,7 @@ class MockFile:
         """
         return self._dicitonary_string
 
-class TestLinuxWordGenerator(TestCase):
+class TestUbuntuWordGenerator(TestCase):
     """
         Test class, ensures everything works
     """
@@ -41,8 +41,8 @@ class TestLinuxWordGenerator(TestCase):
         self.mock_callable(builtins, "open").for_call(
             "made_up_location", 'r'
         ).to_return_value(MockFile())
-        self._real_dict = LinuxWordGenerator()
-        self._fake_dict = LinuxWordGenerator(dict_location="made_up_location")
+        self._real_dict = UbuntuWordGenerator()
+        self._fake_dict = UbuntuWordGenerator(dict_location="made_up_location")
 
     def test_generate_word(self):
         """
@@ -58,7 +58,7 @@ class TestLinuxWordGenerator(TestCase):
     def test_generate_words(self):
         """
             Tests that both the fake and real dictionary will return the correct
-            number of words. LinuxWordDictionary is set up so that
+            number of words. UbuntuWordDictionary is set up so that
             generate_words repeatedly calls generate_word, so this test doesn't
             need to ensure no apostrophes
         """
@@ -81,11 +81,11 @@ class TestLinuxWordGenerator(TestCase):
     def test_no_dictionary(self):
         """
             This will test that if no dictionary is available,
-            LinuxWordGenerator will throw a NameError
+            UbuntuWordGenerator will throw a NameError
         """
         self.mock_callable("linux_word_generator", "isfile").to_return_value(False)
 
         with self.assertRaises(NameError):
-            LinuxWordGenerator()
+            UbuntuWordGenerator()
         with self.assertRaises(NameError):
-            LinuxWordGenerator("made_up")
+            UbuntuWordGenerator("made_up")

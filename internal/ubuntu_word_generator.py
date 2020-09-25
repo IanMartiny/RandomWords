@@ -1,5 +1,5 @@
 """
-    LinuxWordGenerator will generate random words from either a provided
+    UbuntuWordGenerator will generate random words from either a provided
     dictionary or from one of the standard linux dictionaries:
     /usr/share/dict/words or /usr/dict/words, whichever exists
 """
@@ -13,7 +13,7 @@ from word_generator_interface import WordGeneratorInterface
 DEFAULT_LOCATIONS = ["/usr/share/dict/words", "/usr/dict/words"]
 
 
-class LinuxWordGenerator(WordGeneratorInterface):
+class UbuntuWordGenerator(WordGeneratorInterface):
     """
         Generate a set of random words using a provided dictionary or the linux
         default

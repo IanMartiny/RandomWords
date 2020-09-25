@@ -6,7 +6,7 @@
 import argparse
 from typing import Optional
 
-from internal.linux_word_generator import LinuxWordGenerator, WordGeneratorInterface
+from internal.ubuntu_word_generator import UbuntuWordGenerator, WordGeneratorInterface
 
 
 def _set_up() -> argparse.Namespace:
@@ -20,7 +20,7 @@ def _set_up() -> argparse.Namespace:
     return parser.parse_args()
 
 def _get_generator(dictionary: Optional[str] = None) -> WordGeneratorInterface:
-    return LinuxWordGenerator(dictionary)
+    return UbuntuWordGenerator(dictionary)
 
 args = _set_up()
 gen = _get_generator(dictionary=args.dictionary)
