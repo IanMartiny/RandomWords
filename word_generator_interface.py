@@ -1,3 +1,6 @@
+"""
+    General interface for functions a random word generator should have.
+"""
 from typing import Set
 
 class WordGeneratorInterface:

@@ -1,3 +1,8 @@
+"""
+    LinuxWordGenerator will generate random words from either a provided
+    dictionary or from one of the standard linux dictionaries:
+    /usr/share/dict/words or /usr/dict/words, whichever exists
+"""
 from os.path import isfile
 from random import choice
 from typing import Optional, Set
@@ -15,14 +20,14 @@ class LinuxWordGenerator(WordGeneratorInterface):
     """
     def __init__(self, dict_location: Optional[str] = None) -> None:
         if dict_location and isfile(dict_location):
-            with open(dict_location, 'r') as f:
-                self._dictionary = f.read().splitlines()
+            with open(dict_location, 'r') as _f:
+                self._dictionary = _f.read().splitlines()
         elif isfile(DEFAULT_LOCATIONS[0]):
-            with open(DEFAULT_LOCATIONS[0], 'r') as f:
-                self._dictionary = f.read().splitlines()
+            with open(DEFAULT_LOCATIONS[0], 'r') as _f:
+                self._dictionary = _f.read().splitlines()
         elif isfile(DEFAULT_LOCATIONS[1]):
-            with open(DEFAULT_LOCATIONS[1], 'r') as f:
-                self._dictionary = f.read().splitlines()
+            with open(DEFAULT_LOCATIONS[1], 'r') as _f:
+                self._dictionary = _f.read().splitlines()
         else:
             raise NameError("No valid dictionary found")
 
@@ -43,15 +48,6 @@ class LinuxWordGenerator(WordGeneratorInterface):
             generate a given number of distinct words from dictionary by calling
             generate_word numerous times
         """
-        # random_words = set()
-        # while len(random_words) != num:
-        #     needed = num - len(random_words)
-        #     tmp = sample(self._dictionary, needed)
-
-        #     tmp = [x for x in tmp if "'" not in x]
-        #     random_words.union(tmp)
-
-        # return random_words
         random_words = set()
         while len(random_words) != num:
             random_words.add(self.generate_word())
