@@ -12,10 +12,10 @@ from internal.ubuntu_word_generator import UbuntuWordGenerator, WordGeneratorInt
 def _set_up() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate random words")
     parser.add_argument(
-        "--num-words", dest="num_words", type=int, default=5
+       "-nw", "--num-words", dest="num_words", type=int, default=5
     )
     parser.add_argument(
-        "--dictionary", dest="dictionary", type=Optional[str], default=None
+        "-d", "--dictionary", dest="dictionary", type=Optional[str], default=None
     )
     return parser.parse_args()
 
