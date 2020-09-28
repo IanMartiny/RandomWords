@@ -20,7 +20,7 @@ def _set_up() -> argparse.Namespace:
     return parser.parse_args()
 
 def _get_generator(dictionary: Optional[str] = None) -> WordGeneratorInterface:
-    return UbuntuWordGenerator(dictionary)
+    return UbuntuWordGenerator(dict_location=dictionary)
 
 args = _set_up()
 gen = _get_generator(dictionary=args.dictionary)
