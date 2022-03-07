@@ -5,6 +5,7 @@
 """
 from os.path import isfile
 from random import choice
+import re
 from typing import Optional, Set
 
 from word_generator_interface import WordGeneratorInterface
@@ -30,6 +31,9 @@ class UbuntuWordGenerator(WordGeneratorInterface):
                 self._dictionary = _f.read().splitlines()
         else:
             raise NameError("No valid dictionary found")
+        # Now strip _dictionary of words with capital letters
+        pattern = re.compile("[A-Z]")
+        self._dictionary = [s for s in self._dictionary if pattern.search(s) is None]
 
     def generate_word(self) -> str:
         """
